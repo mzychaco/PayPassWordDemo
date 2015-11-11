@@ -10,8 +10,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 
-import com.amberwhitesky.dialog.CustomDialog;
-import com.amberwhitesky.dialog.CustomDialog.InputDialogListener;
+import com.amberwhitesky.dialog.PasswordInputDialog;
+import com.amberwhitesky.dialog.PasswordInputDialog.InputDialogListener;
 import com.amberwhitesky.paypassworddemo.R;
 
 /**
@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 	private EditText pass_edit;
 	private String  str_pass;
 	
-	private  CustomDialog customDialog;
+	private  PasswordInputDialog customDialog;
 	private InputDialogListener  inputDialogListener;
 	
 
@@ -77,7 +77,7 @@ public class MainActivity extends Activity {
 	 * init Dialog
 	 */
 	private  void initDialog(){
-		customDialog = new CustomDialog(MainActivity.this,R.style.mystyle,R.layout.customdialog) ;
+		customDialog = new PasswordInputDialog(MainActivity.this,R.style.mystyle,R.layout.customdialog) ;
 		inputDialogListener  = new  InputDialogListener() {
 			
 			@Override

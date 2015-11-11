@@ -14,7 +14,7 @@ import com.amberwhitesky.paypassworddemo.R;
 import com.amberwhitesky.pwd.GridPasswordView;
 import com.amberwhitesky.pwd.GridPasswordView.OnPasswordChangedListener;
 
-public class CustomDialog extends Dialog implements OnClickListener {
+public class PasswordInputDialog extends Dialog implements OnClickListener {
 
 	private GridPasswordView gridpassword;
 	public static PopupWindow pop;
@@ -37,18 +37,18 @@ public class CustomDialog extends Dialog implements OnClickListener {
 		this.mDialogListener = inputDialogListener;
 	}
 
-	public CustomDialog(Context context) {
+	public PasswordInputDialog(Context context) {
 		super(context);
 		this.context = context;
 	}
 
-	public CustomDialog(Context context, int resLayout) {
+	public PasswordInputDialog(Context context, int resLayout) {
 		super(context);
 		this.context = context;
 		this.layoutRes = resLayout;
 	}
 
-	public CustomDialog(Context context, int theme, int resLayout) {
+	public PasswordInputDialog(Context context, int theme, int resLayout) {
 		super(context, theme);
 		this.context = context;
 		this.layoutRes = resLayout;
@@ -79,30 +79,24 @@ public class CustomDialog extends Dialog implements OnClickListener {
 
 		// 取消按钮点击事件
 		cancelBtn.setOnClickListener(this);
-		//
-		gridpassword.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
-		int view_id = v.getId();
-		switch (view_id) {
-		case R.id.confirm_btn:
+		int view_id = v.getId(); 
+		if (view_id == R.id.confirm_btn) {
 			if (mDialogListener != null) {
 				mDialogListener.onOK(passwordStr);
 				dismiss();
 			}
-			break;
-		case R.id.cancel_btn:
+		} else if (view_id == R.id.cancel_btn) {
 			dismiss();
-			break;
-		default:
-			break;
+		} else {
 		}
 	}
 
-	/**
-	 * 监听输入的密码
+	/** 
+	 * 监听输入的密码  
 	 */
 	OnPasswordChangedListener passlistener = new OnPasswordChangedListener() {
 
